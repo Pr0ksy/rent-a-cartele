@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rent a Cartele | Rent a Car & Driver</title>
+  <meta name="description" content="Rent a Cartele – iznajmljivanje vozila u Vladimirovcu | Najbolja cena, Full kasko, No limit KM. Pozovi 063 729 0279 (Viber & WhatsApp)." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a1224;           /* very dark blue */
+      --bg-2:#0e1630;         /* dark blue */
+      --blue-600:#1e3a8a;     /* brand blue */
+      --blue-500:#2f57c5;     /* accent blue */
+      --blue-400:#6b8cff;     /* light accent */
+      --gold-500:#d6af47;     /* brand gold */
+      --gold-600:#b8942e;     /* deeper gold */
+      --text:#eaf0ff;         /* near-white */
+      --muted:#c9d3ffcc;      /* muted */
+      --glass:rgba(255,255,255,.08);
+      --glass-strong:rgba(255,255,255,.12);
+      --border:rgba(255,255,255,.15);
+      --shadow:0 20px 50px rgba(0,0,0,.45);
+      --radius-2xl:22px;
+      --radius-xl:16px;
+      --radius-lg:12px;
+      --ring:0 0 0 2px inset rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; background:linear-gradient(180deg,var(--bg),var(--bg-2)); color:var(--text); font-family:"Inter",system-ui,Segoe UI,Roboto,Arial,sans-serif;}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{width:min(1200px,92%); margin-inline:auto}
+
+    /* Utilities */
+    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.9rem 1.2rem; border-radius:999px; font-weight:700; letter-spacing:.2px; transition:.25s ease; border:1px solid var(--border); backdrop-filter:saturate(140%) blur(10px); box-shadow:var(--ring)}
+    .btn.primary{background:linear-gradient(135deg,var(--blue-500),var(--blue-600));}
+    .btn.primary:hover{transform:translateY(-2px); box-shadow:0 10px 30px rgba(47,87,197,.45)}
+    .btn.gold{background:linear-gradient(135deg,var(--gold-500),var(--gold-600)); color:#0b0f1a}
+    .btn.gold:hover{transform:translateY(-2px); box-shadow:0 10px 30px rgba(214,175,71,.45)}
+    .btn.ghost{background:var(--glass);}
+    .chip{display:inline-flex; align-items:center; gap:.5rem; padding:.45rem .75rem; border-radius:999px; border:1px solid var(--border); background:var(--glass); font-weight:600; color:var(--muted)}
+    .glass{background:var(--glass); border:1px solid var(--border); backdrop-filter:saturate(140%) blur(14px); box-shadow:var(--shadow)}
+    .section{padding:80px 0}
+    @media (max-width: 768px){.section{padding:56px 0}}
+    @media (min-width: 981px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
+    /* Animations */
+    @keyframes fadeUp{from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:translateY(0)}}
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease}
+    .reveal.in-view{opacity:1; transform:translateY(0)}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; border-bottom:1px solid rgba(255,255,255,.06); backdrop-filter:saturate(140%) blur(12px); background:linear-gradient(180deg,rgba(14,22,48,.85),rgba(14,22,48,.65));}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:.75rem; font-weight:800; letter-spacing:.3px}
+    .brand-badge{width:38px; height:38px; border-radius:12px; background:linear-gradient(135deg,var(--blue-400),var(--blue-600)); display:grid; place-items:center; font-weight:900; color:white; box-shadow:0 10px 24px rgba(47,87,197,.45)}
+    nav ul{list-style:none; display:flex; gap:1.2rem; margin:0; padding:0; align-items:center}
+    nav a{padding:.6rem .8rem; border-radius:999px; color:var(--muted)}
+    nav a:hover{color:var(--text); background:var(--glass)}
+    .cta-wrap{display:flex; gap:.6rem; align-items:center}
+    /* Mobile menu */
+    .hamburger{display:none; background:var(--glass); border:1px solid var(--border); border-radius:10px; padding:.55rem .7rem}
+    @media (max-width: 980px){
+      nav ul{display:none}
+      .hamburger{display:inline-flex}
+      .mobile-menu{position:fixed; inset:60px 0 auto 0; background:rgba(11,15,26,.9); border-bottom:1px solid var(--border); backdrop-filter:blur(10px); display:none}
+      .mobile-menu.open{display:block}
+      .mobile-menu ul{list-style:none; margin:0; padding:12px; display:grid; gap:8px}
+      .mobile-menu a{display:block; padding:12px 16px; border-radius:10px}
+      .mobile-menu a:hover{background:var(--glass)}
+    }
+
+    /* Hero */
+    .hero{position:relative; min-height:72vh; display:grid; place-items:center; padding:90px 0 40px}
+    .hero::before{content:""; position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; filter:brightness(.55) saturate(1.2)}
+    .hero::after{content:""; position:absolute; inset:0; background:radial-gradient(80% 60% at 50% 20%, rgba(47,87,197,.35) 0%, transparent 55%), linear-gradient(180deg,rgba(10,18,36,.2),rgba(10,18,36,.7))}
+    .hero > .container{position:relative; z-index:2}
+    .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:28px}
+    @media (max-width: 980px){.hero-grid{grid-template-columns:1fr}}
+    .hero h1{font-size:clamp(34px,6vw,64px); line-height:1.04; margin:0 0 14px; font-weight:800}
+    .hero p.lead{font-size:clamp(16px,2.1vw,20px); color:var(--muted); margin:0 0 22px}
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap}
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:20px 0}
+    .glass-cards{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+    @media (max-width: 580px){.glass-cards{grid-template-columns:1fr}}
+    .glass-card{padding:16px; border-radius:var(--radius-xl); display:flex; align-items:center; gap:12px}
+    .ico{width:36px; height:36px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg,var(--blue-400),var(--blue-600)); box-shadow:0 8px 18px rgba(47,87,197,.35)}
+    @media (min-width: 981px) {
+  .hero .card {
+    display: none;
+  }
+}
+
+@media (min-width: 981px) {
+  .hero {
+    min-height: 100vh;
+    padding-bottom: 200px; /* doda prostor ispod slike */
+  }
+
+  .hero::after {
+    background:
+      linear-gradient(to bottom, rgba(10,18,36,0) 70%, rgba(10,18,36,1) 100%),
+      radial-gradient(80% 60% at 50% 20%, rgba(47,87,197,.35) 0%, transparent 55%);
+    mix-blend-mode: normal;
+  }
+
+  .about {
+    margin-top: -100px; /* spušta 'O nama' ispod fade prelaza */
+  }
+}
+    /* About */
+    .about{position:relative}
+    .about-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center}
+    @media (max-width: 980px){.about-grid{grid-template-columns:1fr; gap:18px}}
+    .about .media{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .about .media img{border-radius:18px; border:1px solid var(--border); transition:.35s ease; filter:saturate(1.1)}
+    .about .media img:hover{transform:translateY(-6px)}
+    .kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px}
+    .kpi{padding:14px; border-radius:14px; text-align:center}
+    .kpi h3{margin:4px 0 0; font-size:20px}
+    .kpi p{margin:0; color:var(--muted); font-size:12px}
+
+    /* Fleet */
+    .fleet .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    @media (max-width: 980px){.fleet .grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 620px){.fleet .grid{grid-template-columns:1fr}}
+    .car{border-radius:18px; overflow:hidden; display:flex; flex-direction:column}
+    .car .photo{aspect-ratio:16/10; background:#0f1730; position:relative}
+    .car img{width:100%; height:100%; object-fit:cover}
+    .car .body{padding:14px}
+    .car h4{margin:0 0 6px}
+    .specs{display:flex; flex-wrap:wrap; gap:8px; color:var(--muted); font-size:13px}
+    .price{margin:10px 0; font-weight:800; color:var(--gold-500)}
+    .car .actions{display:flex; gap:8px; margin-top:auto; padding:0 14px 14px}
+    .hidden{display:none}
+
+    /* Contact */
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    @media (max-width: 980px){.cards{grid-template-columns:1fr 1fr}}
+    @media (max-width: 620px){.cards{grid-template-columns:1fr}}
+    .card{border-radius:18px; padding:18px}
+    .map{border:0; width:100%; height:360px; border-radius:18px; filter:hue-rotate(8deg) saturate(1.1); border:1px solid var(--border)}
+    form{display:grid; gap:12px}
+    input, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:rgba(255,255,255,.06); color:var(--text)}
+    textarea{min-height:120px; resize:vertical}
+    input:focus, textarea:focus{outline:none; border-color:rgba(214,175,71,.55); box-shadow:0 0 0 3px rgba(214,175,71,.2)}
+
+    /* CTA band */
+    .cta-band{position:relative; overflow:hidden; border-radius:22px; padding:34px; background:
+      radial-gradient(60% 100% at 0% 100%, rgba(214,175,71,.25) 0%, transparent 55%),
+      radial-gradient(60% 100% at 100% 0%, rgba(47,87,197,.35) 0%, transparent 55%),
+      linear-gradient(135deg, rgba(15,23,46,.9), rgba(10,18,36,.9));
+      border:1px solid var(--border);
+    }
+    .cta-band h3{margin:0 0 8px; font-size:clamp(22px,3vw,32px)}
+    .cta-band p{margin:0 0 14px; color:var(--muted)}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,.06); padding:32px 0; margin-top:40px; background:linear-gradient(180deg, rgba(10,18,36,.2), rgba(10,18,36,.4))}
+    .footer-grid{display:grid; grid-template-columns:1.2fr 1fr 1fr 1.2fr; gap:16px}
+    @media (max-width: 980px){.footer-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width: 620px){.footer-grid{grid-template-columns:1fr}}
+    .footer-col h5{margin:0 0 10px}
+    .footer-col ul{list-style:none; margin:0; padding:0; display:grid; gap:8px}
+    .copyright{margin-top:14px; color:var(--muted); font-size:13px}
+
+    /* Section headings */
+    .section h2{font-size:clamp(26px,4vw,36px); margin:0 0 6px}
+    .section p.sub{margin:0 0 22px; color:var(--muted)}
+
+/* === ANIMACIJE === */
+
+/* Global fade-up reveal (već koristiš, sad ga nadograđujemo) */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fine fade za slike i karte */
+img,
+.card,
+.car {
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.5s ease, 
+              filter 0.6s ease;
+}
+img:hover,
+.card:hover,
+.car:hover {
+  transform: translateY(-6px) scale(1.02);
+  filter: brightness(1.1);
+}
+
+/* Dugmad – suptilan zoom efekat */
+.btn {
+  transition: transform .25s ease, box-shadow .3s ease, background .3s ease;
+}
+.btn:hover {
+  transform: scale(1.05) translateY(-2px);
+}
+
+/* Header fade-in kad se pojavi */
+header {
+  animation: fadeDown 0.8s ease forwards;
+  opacity: 0;
+}
+@keyframes fadeDown {
+  from {opacity:0; transform: translateY(-20px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+/* Hero naslov i CTA blago kasne */
+.hero h1 {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 1s ease forwards 0.2s;
+}
+.hero p.lead {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 1s ease forwards 0.4s;
+}
+.hero-cta {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 1s ease forwards 0.6s;
+}
+
+@keyframes slideUp {
+  to {opacity:1; transform:translateY(0);}
+}
+
+/* Parallax pomeranje pozadine hero sekcije prilikom skrola */
+.hero::before {
+  transition: transform 0.2s linear;
+  will-change: transform;
+}
+    
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <span class="brand-badge">RC</span>
+        <span>Rent a Cartele</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#about">O nama</a></li>
+          <li><a href="#fleet">Vozila</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="cta-wrap">
+        <a class="btn ghost" href="#fleet">Pronađi svoje vozilo</a>
+        <button id="hamburger" class="hamburger" aria-label="Meni" title="Meni">☰</button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu">
+      <ul class="container">
+        <li><a href="#about" onclick="toggleMenu(false)">O nama</a></li>
+        <li><a href="#fleet" onclick="toggleMenu(false)">Vozila</a></li>
+        <li><a href="#contact" onclick="toggleMenu(false)">Kontakt</a></li>
+        <li><a class="btn primary" href="#fleet" onclick="toggleMenu(false)">Pronađi svoje vozilo</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="chip">Rent a Car & Driver</span>
+        <h1>Vozi bez brige <span style="background:linear-gradient(135deg,var(--gold-500),#fff); -webkit-background-clip:text; background-clip:text; color:transparent">Najbolja cena</span>, Full kasko, No limit KM</h1>
+        <p class="lead">Iznajmljivanje automobila u Vladimirovcu i okolini. Brza rezervacija, fleksibilni uslovi i podrška 24/7 preko Viber & WhatsApp.</p>
+        <div class="hero-cta">
+          <a class="btn gold" href="#fleet">Rezerviši vozilo</a>
+          <a class="btn primary" href="https://wa.me/381637290279?text=Zdravo%2C%20zanima%20me%20vozilo%20iz%20ponude%20Rent%20a%20Cartele" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn ghost" href="viber://chat?number=%2B381637290279">Viber</a>
+        </div>
+        <div class="badges">
+          <span class="chip">🔑 THE BEST PRICE</span>
+          <span class="chip">🔑 FULL COVERAGE INSURANCE</span>
+          <span class="chip">🔑 No limit KM</span>
+        </div>
+        <div class="glass-cards">
+          <div class="glass glass-card">
+            <span class="ico">💳</span>
+            <div><strong>Nema skrivenih troškova</strong><br><span style="color:var(--muted)">Transparentne cene po danu</span></div>
+          </div>
+          <div class="glass glass-card">
+            <span class="ico">🛡️</span>
+            <div><strong>Full kasko pokriće</strong><br><span style="color:var(--muted)">Maksimalna sigurnost na putu</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="glass card">
+          <h3 style="margin:0 0 8px">Brzi kontakt</h3>
+          <p class="sub" style="margin:0 0 12px">Telefon / Viber / WhatsApp</p>
+          <div style="display:grid; gap:10px">
+            <a class="btn gold" href="tel:+381637290279">Pozovi: 063 729 0279</a>
+            <a class="btn primary" href="https://wa.me/381637290279" target="_blank" rel="noopener">Piši na WhatsApp</a>
+            <a class="btn ghost" href="viber://chat?number=%2B381637290279">Piši na Viber</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+  <!-- About -->
+  <section class="section about" id="about">
+    <div class="container about-grid">
+      <div class="reveal">
+        <h2>O nama</h2>
+        <p class="sub">Rent a Cartele spaja luksuz, udobnost i fleksibilnost. Naš cilj je da ti omogućimo vrhunsko iskustvo vožnje po najpovoljnijim uslovima – bilo da putuješ poslovno ili privatno.</p>
+        <div style="display:grid; gap:10px; margin:14px 0 18px">
+          <div class="chip">⭐ Profesionalna usluga</div>
+          <div class="chip">🚘 Moderna flota</div>
+          <div class="chip">💬 Podrška 24/7 (Viber & WhatsApp)</div>
+        </div>
+        <a class="btn ghost" href="#contact">Saznaj više</a>
+        <div class="kpis">
+          <div class="glass kpi"><div class="ico" style="width:28px;height:28px">⏱️</div><h3>Brza isporuka</h3><p>Preuzimanje istog dana</p></div>
+          <div class="glass kpi"><div class="ico" style="width:28px;height:28px">🛠️</div><h3>Servisirano</h3><p>Redovno održavanje</p></div>
+          <div class="glass kpi"><div class="ico" style="width:28px;height:28px">🗺️</div><h3>Široka zona</h3><p>Vožnja bez limita</p></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="media">
+          <img class="glass" src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1600&auto=format&fit=crop" alt="Luksuzni automobil – bočni prikaz">
+          <img class="glass" src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1600&auto=format&fit=crop" alt="Unutrašnjost vozila – enterijer">
+          <img class="glass" src="https://images.unsplash.com/photo-1618598655372-83b88c0c8d5b?q=80&w=1600&auto=format&fit=crop" alt="Vozač u odelu – profesionalna usluga">
+          <img class="glass" src="https://images.unsplash.com/photo-1619451334792-4501a22d7a5b?q=80&w=1600&auto=format&fit=crop" alt="Noćna vožnja – svetla grada">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fleet -->
+  <section class="section fleet" id="fleet">
+    <div class="container">
+      <h2 class="reveal">Izdvojena vozila</h2>
+      <p class="sub reveal">Izbor najtraženijih modela. Klikom na „Rezerviši” krećeš u brzu poruku sa svim detaljima.</p>
+      <div class="grid">
+        <!-- 3/4 istaknuta vozila -->
+        <article class="glass car reveal">
+          <div class="photo"><img src="images/auti/auto1.png" alt="Mercedes C-Class" loading="lazy"></div>
+          <div class="body">
+            <h4>MERCEDES B200</h4>
+            <div class="specs">
+              <span>4 sedišta</span><span>•</span>
+              <span>2 kofera</span><span>•</span>
+              <span>Automatik</span>
+            </div>
+            <div class="price">od 60€/dan</div>
+          </div>
+          <div class="actions">
+            <a class="btn gold" href="https://wa.me/381637290279?text=Rezervacija%3A%20Mercedes%20C-Class" target="_blank">Rezerviši</a>
+            <a class="btn ghost" href="#contact">Detalji</a>
+          </div>
+        </article>
+
+        <article class="glass car reveal">
+          <div class="photo"><img src="images/auti/auto1.png" alt="Mercedes C-Class" loading="lazy"></div>
+          <div class="body">
+            <h4>MERCEDES B200</h4>
+            <div class="specs">
+              <span>4 sedišta</span><span>•</span>
+              <span>2 kofera</span><span>•</span>
+              <span>Automatik</span>
+            </div>
+            <div class="price">od 60€/dan</div>
+          </div>
+          <div class="actions">
+            <a class="btn gold" href="https://wa.me/381637290279?text=Rezervacija%3A%20Mercedes%20C-Class" target="_blank">Rezerviši</a>
+            <a class="btn ghost" href="#contact">Detalji</a>
+          </div>
+        </article>
+
+        <article class="glass car reveal">
+          <div class="photo"><img src="images/auti/auto1.png" alt="Mercedes C-Class" loading="lazy"></div>
+          <div class="body">
+            <h4>MERCEDES B200</h4>
+            <div class="specs">
+              <span>4 sedišta</span><span>•</span>
+              <span>2 kofera</span><span>•</span>
+              <span>Automatik</span>
+            </div>
+            <div class="price">od 60€/dan</div>
+          </div>
+          <div class="actions">
+            <a class="btn gold" href="https://wa.me/381637290279?text=Rezervacija%3A%20Mercedes%20C-Class" target="_blank">Rezerviši</a>
+            <a class="btn ghost" href="#contact">Detalji</a>
+          </div>
+        </article>
+
+        <article class="glass car reveal">
+          <div class="photo"><img src="images/auti/auto4.png" alt="Mercedes C-Class" loading="lazy"></div>
+          <div class="body">
+            <h4>GOLF 7 na metan (CNG)</h4>
+            <div class="specs">
+              <span>4 sedišta</span><span>•</span>
+              <span>2 kofera</span><span>•</span>
+              <span>Automatik</span>
+            </div>
+            <div class="price">od 60€/dan</div>
+          </div>
+          <div class="actions">
+            <a class="btn gold" href="https://wa.me/381637290279?text=Rezervacija%3A%20Mercedes%20C-Class" target="_blank">Rezerviši</a>
+            <a class="btn ghost" href="#contact">Detalji</a>
+          </div>
+        </article>
+        <article class="glass car reveal">
+          <div class="photo"><img src="images/auti/auto4.png" alt="Mercedes C-Class" loading="lazy"></div>
+          <div class="body">
+            <h4>GOLF 7 na metan (CNG)</h4>
+            <div class="specs">
+              <span>4 sedišta</span><span>•</span>
+              <span>2 kofera</span><span>•</span>
+              <span>Automatik</span>
+            </div>
+            <div class="price">od 60€/dan</div>
+          </div>
+          <div class="actions">
+            <a class="btn gold" href="https://wa.me/381637290279?text=Rezervacija%3A%20Mercedes%20C-Class" target="_blank">Rezerviši</a>
+            <a class="btn ghost" href="#contact">Detalji</a>
+          </div>
+        </article>
+
+        <article class="glass car reveal">
+          <div class="photo"><img src="images/auti/auto4.png" alt="Mercedes C-Class" loading="lazy"></div>
+          <div class="body">
+            <h4>GOLF 7 na metan (CNG)</h4>
+            <div class="specs">
+              <span>4 sedišta</span><span>•</span>
+              <span>2 kofera</span><span>•</span>
+              <span>Automatik</span>
+            </div>
+            <div class="price">od 60€/dan</div>
+          </div>
+          <div class="actions">
+            <a class="btn gold" href="https://wa.me/381637290279?text=Rezervacija%3A%20Mercedes%20C-Class" target="_blank">Rezerviši</a>
+            <a class="btn ghost" href="#contact">Detalji</a>
+          </div>
+        </article>
+
+
+        <!-- Dodatna vozila (skrivena dok se ne klikne Učitaj još) -->
+        <article class="glass car reveal hidden more-item">
+          <div class="photo"><img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1600&auto=format&fit=crop" alt="Mercedes S-Class" loading="lazy"></div>
+          <div class="body">
+            <h4>Lambo</h4>
+            <div class="specs"><span>5 sedišta</span><span>•</span><span>3 kofera</span><span>•</span><span>Automatik</span></div>
+            <div class="price">od 140€/dan</div>
+          </div>
+          <div class="actions">
+            <a class="btn gold" href="https://wa.me/381637290279?text=Rezervacija%3A%20Mercedes%20S-Class" target="_blank">Rezerviši</a>
+            <a class="btn ghost" href="#contact">Detalji</a>
+          </div>
+        </article>
+
+        <article class="glass car reveal hidden more-item">
+          <div class="photo"><img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1600&auto=format&fit=crop" alt="Mercedes S-Class" loading="lazy"></div>
+          <div class="body">
+            <h4>Lambo</h4>
+            <div class="specs"><span>2 sedišta</span><span>•</span><span>3 kofera</span><span>•</span><span>Automatik</span></div>
+            <div class="price">od 140€/dan</div>
+          </div>
+          <div class="actions">
+            <a class="btn gold" href="https://wa.me/381637290279?text=Rezervacija%3A%20Mercedes%20S-Class" target="_blank">Rezerviši</a>
+            <a class="btn ghost" href="#contact">Detalji</a>
+          </div>
+        </article>
+
+        <article class="glass car reveal hidden more-item">
+          <div class="photo"><img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1600&auto=format&fit=crop" alt="Mercedes S-Class" loading="lazy"></div>
+          <div class="body">
+            <h4>Lambo</h4>
+            <div class="specs"><span>2 sedišta</span><span>•</span><span>3 kofera</span><span>•</span><span>Automatik</span></div>
+            <div class="price">od 140€/dan</div>
+          </div>
+          <div class="actions">
+            <a class="btn gold" href="https://wa.me/381637290279?text=Rezervacija%3A%20Mercedes%20S-Class" target="_blank">Rezerviši</a>
+            <a class="btn ghost" href="#contact">Detalji</a>
+          </div>
+        </article>
+      </div>
+      <br>
+      <div style="display:flex; justify-content:center; margin-top:16px">
+        <button id="loadMore" class="btn primary">Učitaj još vozila</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Band -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h3>Spremni za vožnju bez ograničenja?</h3>
+        <p>Rezerviši svoje vozilo danas – THE BEST PRICE, FULL COVERAGE INSURANCE, No limit KM.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap">
+          <a class="btn gold" href="#fleet">Rezerviši odmah</a>
+          <a class="btn ghost" href="#contact">Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="reveal">Kontakt</h2>
+      <p class="sub reveal">Brz odgovor preko poziva, Vibera ili WhatsApp‑a. Lokacija: Žarka Zrenjanina 44, Vladimirovac.</p>
+      <div class="cards">
+        <div class="glass card reveal">
+          <h3 style="margin:0 0 6px">Pozovi nas</h3>
+          <p class="sub" style="margin:0 0 12px">063 729 0279</p>
+          <a class="btn gold" href="tel:+381637290279">Direktan poziv</a>
+        </div>
+        <div class="glass card reveal">
+          <h3 style="margin:0 0 6px">Viber & WhatsApp</h3>
+          <p class="sub" style="margin:0 0 12px">Dostupni 24/7</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <a class="btn primary" href="https://wa.me/381637290279" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn ghost" href="viber://chat?number=%2B381637290279">Viber</a>
+          </div>
+        </div>
+        <div class="glass card reveal">
+          <h3 style="margin:0 0 6px">Piši nam</h3>
+          <form onsubmit="event.preventDefault(); alert('Hvala! Poruka je poslata.'); this.reset();">
+            <input required type="text" placeholder="Ime i prezime" aria-label="Ime i prezime">
+            <input required type="email" placeholder="Email" aria-label="Email">
+            <textarea required placeholder="Poruka" aria-label="Poruka"></textarea>
+            <button class="btn gold" type="submit">Pošalji poruku</button>
+          </form>
+        </div>
+      </div>
+      <div class="reveal" style="margin-top:16px">
+        <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%C5%BDarka%20Zrenjanina%2044%2C%20Vladimirovac&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="brand" style="margin-bottom:8px">
+          <span class="brand-badge">RC</span>
+          <strong>Rent a Cartele</strong>
+        </div>
+        <p style="color:var(--muted); margin:0">Najbolja cena, Full kasko, No limit KM.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Brzi linkovi</h5>
+        <ul>
+          <li><a href="#top">Početna</a></li>
+          <li><a href="#about">O nama</a></li>
+          <li><a href="#fleet">Vozila</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Usluge</h5>
+        <ul>
+          <li>Iznajmljivanje vozila</li>
+          <li>Vozač na zahtev</li>
+          <li>Transferi</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Kontakt</h5>
+        <ul>
+          <li>📍 Žarka Zrenjanina 44, Vladimirovac</li>
+          <li>📞 <a href="tel:+381637290279">063 729 0279</a></li>
+          <li>💬 <a href="https://wa.me/381637290279" target="_blank" rel="noopener">WhatsApp</a> & <a href="viber://chat?number=%2B381637290279">Viber</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container copyright">PRODANIĆ DIGITAL</div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    function toggleMenu(force){
+      const open = typeof force === 'boolean' ? force : !mobileMenu.classList.contains('open');
+      mobileMenu.classList.toggle('open', open);
+    }
+    hamburger?.addEventListener('click',()=>toggleMenu());
+
+    // IntersectionObserver for reveal animations
+    const io = new IntersectionObserver(entries => {
+      for(const e of entries){
+        if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
+      }
+    }, {threshold:.2});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Load more vehicles
+    const btnMore = document.getElementById('loadMore');
+    const moreItems = Array.from(document.querySelectorAll('.more-item'));
+    btnMore?.addEventListener('click',()=>{
+      moreItems.forEach(x=>x.classList.remove('hidden'));
+      btnMore.remove();
+    });
+  </script>
+</body>
+</html>
